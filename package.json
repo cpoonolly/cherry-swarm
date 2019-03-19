@@ -2,7 +2,8 @@
   "name": "cherry-swarm",
   "version": "1.0.0",
   "description": "a pretty swarm webcomponent for cherrys homepage",
-  "private": true,
+  "main": "cherry-swarm.js",
+  "module": "cherry-swarm.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack"
