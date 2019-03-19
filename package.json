@@ -1,7 +1,7 @@
 {
-  "name": "cherry-logo",
+  "name": "cherry-swarm",
   "version": "1.0.0",
-  "description": "a logo webcomponent for cherrys homepage",
+  "description": "a pretty swarm webcomponent for cherrys homepage",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
