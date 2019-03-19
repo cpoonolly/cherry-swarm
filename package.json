@@ -2,9 +2,10 @@
   "name": "cherry-swarm",
   "version": "1.0.0",
   "description": "a pretty swarm webcomponent for cherrys homepage",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
   },
   "author": "",
   "license": "ISC",
@@ -12,5 +13,10 @@
     "@webcomponents/webcomponentsjs": "^2.2.7",
     "lit-element": "^2.0.1",
     "lodash": "^4.17.11"
+  },
+  "devDependencies": {
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
   }
 }
