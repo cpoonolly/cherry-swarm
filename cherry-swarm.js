@@ -7,7 +7,7 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-class CherryLogoParticle {
+class SwarmParticle {
     constructor(x, y) {
         this.x = x;
         this.y = y;
@@ -19,7 +19,7 @@ class CherryLogoParticle {
 const SWARM_MOTION_SPHERE = Symbol('SWARM_MOTION_SPHERE');
 const SWARM_MOTION_LOGO = Symbol('SWARM_MOTION_LOGO');
 
-class CherryLogoSwarm {
+class Swarm {
     constructor(xMax, yMax, particleCount, color) {
         this.xMax = xMax;
         this.yMax = yMax;
@@ -28,7 +28,7 @@ class CherryLogoSwarm {
         this.animation = null;
 
         for (let i = 0; i < particleCount; i++) {
-            this.particles[i] = new CherryLogoParticle(getRandomInt(0, xMax), getRandomInt(0, yMax));
+            this.particles[i] = new SwarmParticle(getRandomInt(0, xMax), getRandomInt(0, yMax));
         }
     }
 
@@ -97,9 +97,9 @@ class CherryLogoSwarm {
     }
 }
 
-const CHERRY_LOGO_CANVAS_ID = 'cherry-logo-canvas-id';
+const CHERRY_SWARM_CANVAS_ID = 'cherry-swarm-canvas-id';
 
-class CherryLogo extends LitElement {
+class CherrySwarmCanvas extends LitElement {
 
     static get properties() {
         return {
@@ -127,10 +127,10 @@ class CherryLogo extends LitElement {
         super.connectedCallback();
         
         for (let i = 0; i < this.swarmCount; i++) {
-            this.swarms.push(new CherryLogoSwarm(this.width, this.height, this.particleCount, `hsl(0, 100%, ${getRandomInt(70, 90)}%)`));
+            this.swarms.push(new Swarm(this.width, this.height, this.particleCount, `hsl(0, 100%, ${getRandomInt(70, 90)}%)`));
         }
         
-        requestAnimationFrame((timestamp) => this.updateCherryLogo(timestamp));
+        requestAnimationFrame((timestamp) => this.updateCherry(timestamp));
         setInterval(() => this.updateSwarmAnimations(), 20000);
 
         this.updateSwarmAnimations();
@@ -147,10 +147,10 @@ class CherryLogo extends LitElement {
         });
     }
     
-    updateCherryLogo(currentTime) {
+    updateCherry(currentTime) {
         if (!this.lastAnimationFrameTime) this.lastAnimationFrameTime = currentTime;
 
-        const canvas = this.shadowRoot.getElementById(CHERRY_LOGO_CANVAS_ID);
+        const canvas = this.shadowRoot.getElementById(CHERRY_SWARM_CANVAS_ID);
         if (!canvas) return;
 
         const dt = currentTime - this.lastAnimationFrameTime;
@@ -171,14 +171,14 @@ class CherryLogo extends LitElement {
 
         this.lastAnimationFrameTime = currentTime;
 
-        requestAnimationFrame((timestamp) => this.updateCherryLogo(timestamp));
+        requestAnimationFrame((timestamp) => this.updateCherry(timestamp));
     }
 
     render() {
         return html`
-            <canvas id="${CHERRY_LOGO_CANVAS_ID}" width="${this.width}" height="${this.height}"></canvas>
+            <canvas id="${CHERRY_SWARM_CANVAS_ID}" width="${this.width}" height="${this.height}"></canvas>
         `;
     }
 }
 
-customElements.define('cherry-logo', CherryLogo);
+customElements.define('cherry-swarm', CherrySwarmCanvas);
