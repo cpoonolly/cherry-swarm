@@ -15,4 +15,8 @@ cp dist/* ../ &&
 echo "committing & pushing gh-pages" &&
 git add ../ &&
 git commit -m 'Deploy To Github Pages' &&
-git push -f origin gh-pages
+git push -f origin gh-pages &&
+
+echo "returning to initial state" &&
+cd - &&
+git checkout -
