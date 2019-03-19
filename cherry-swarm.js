@@ -16,9 +16,6 @@ class SwarmParticle {
     }
 }
 
-const SWARM_MOTION_SPHERE = Symbol('SWARM_MOTION_SPHERE');
-const SWARM_MOTION_LOGO = Symbol('SWARM_MOTION_LOGO');
-
 class Swarm {
     constructor(xMax, yMax, particleCount, color) {
         this.xMax = xMax;
@@ -89,9 +86,14 @@ class Swarm {
     }
 
     renderSwarm(canvasContext) {
+        // const PI2 = 2 * Math.PI;
         canvasContext.fillStyle = this.color;
 
         this.particles.forEach((particle) => {
+            // canvasContext.beginPath();
+            // canvasContext.arc(particle.x, particle.y, 5, 0, PI2);
+            // canvasContext.fill();
+
             canvasContext.fillRect(particle.x, particle.y, 5, 5);
         });
     }
@@ -113,8 +115,8 @@ class CherrySwarmCanvas extends LitElement {
     constructor() {
         super();
 
-        this.width = 100;
-        this.height = 100;
+        this.width = window.screen.width - 200;
+        this.height = window.screen.height - 200;
         this.particleCount = 1000;
         this.swarmCount = 1;
         
@@ -127,7 +129,7 @@ class CherrySwarmCanvas extends LitElement {
         super.connectedCallback();
         
         for (let i = 0; i < this.swarmCount; i++) {
-            this.swarms.push(new Swarm(this.width, this.height, this.particleCount, `hsl(0, 100%, ${getRandomInt(70, 90)}%)`));
+            this.swarms.push(new Swarm(this.width, this.height, this.particleCount, `hsl(0, 100%, ${getRandomInt(60, 90)}%)`));
         }
         
         requestAnimationFrame((timestamp) => this.updateCherry(timestamp));

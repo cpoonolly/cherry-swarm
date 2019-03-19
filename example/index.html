@@ -7,9 +7,19 @@
 
     <script src="index.js"></script>
 
+    <style>
+        .cherry-swarm-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+
     <title>Test Page for Cherry's Swarm Webcomponent</title>
 </head>
 <body>
-    <cherry-swarm width="1500" height="800" particleCount="100" swarmCount="10"></cherry-swarm>
+    <div class="cherry-swarm-container">
+        <cherry-swarm particleCount="1000" swarmCount="5"></cherry-swarm>
+    </div>
 </body>
 </html>
